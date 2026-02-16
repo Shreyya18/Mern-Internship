@@ -1,0 +1,13 @@
+.external{
+    color: black;
+    background-color:cornflowerblue;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 30px;
+    width: 200px;
+}
+.external:hover{
+    background-color:deepskyblue;
+    color: black;
+    
+}
