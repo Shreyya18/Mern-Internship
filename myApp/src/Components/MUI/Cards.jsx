@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import image2 from '../../assets/2.jpg'
 
 const Cards = () => {
     const desserts = [
@@ -29,8 +30,7 @@ const Cards = () => {
         },
 
         {
-            image:"https://www.tasteofhome.com/wp-content/uploads/2018/01/Cherry-Delight-Dessert_EXPS_TOHcom23_27515_P2_MD_03_22_4b.jpg?w=700&fit=750%2C750",
-            name:"Cherry Delight Dessert",
+            image:image2,
             price:"100",
             description:" This smooth and creamy cheesecake-like treat is light, sweet and pretty too. Convenience products make it quick and easy to prepare. My husband also likes this dessert when I substitute blueberry pie filling. —Lanae Powell, McPherson, Kansas"
         },

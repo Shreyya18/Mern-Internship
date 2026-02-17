@@ -8,12 +8,14 @@ import BasicTable from "./Components/MUI/BasicTable";
 import Arraymethod from "./Components/ES7/Arraymethod";
 import SpreadOperator from "./Components/ES7/SpreadOperator";
 import Cards from "./Components/MUI/Cards";
+import Muiappbar from "./Components/MUI/Muiappbar";
+import Destructuring from "./Components/ES7/Destructuring";
 function App(){
   return(
     <div>
       <BrowserRouter>
+      <Muiappbar/>
         <Routes>
-
           <Route path='/testing' element={<Testing/>}/>
           <Route path="/" element={<Register/>} />
           <Route path="/arrowfunction" element={<Arrowfunction/>} />
@@ -21,6 +23,7 @@ function App(){
           <Route path= "/arraymethod" element={<Arraymethod/>}/>
           <Route path="/SpreadOperator" element={<SpreadOperator/>} />
           <Route path="/Cards" element={<Cards/>} />
+          <Route path="/Destructuring" element={<Destructuring/>} />
         </Routes>
       </BrowserRouter>
    
