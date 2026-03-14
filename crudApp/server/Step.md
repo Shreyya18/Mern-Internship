@@ -6,4 +6,11 @@ step 4: in terminal
         npm install mongoose
         npm install cors
         npm install nodemon
-        
+
+express - it is a web framework, used to handle incoming request and handle response. it listens to incoming requests and respond to them.
+
+mongoose - handles database connection
+
+cors - (cross origin resource sharing) , it is used for security purpose
+
+nodemon - this command is used to run the server, here server runs whenever there is change in the file.
