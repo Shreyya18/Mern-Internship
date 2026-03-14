@@ -1,6 +1,8 @@
 const express = require('express');
 const dbConnection = require('./db');
-const userroute= require('./Routes/user_routes')
+const cors = require('cors');
+// const userroute= require('./Routes/user_routes')
+
 //  express is a web framework, which responsible to handle incoming request and response
 
 const app = express();
@@ -25,6 +27,13 @@ dbConnection();
 app.get('/apitest', (req, res)=>{
     res.send("Hello Server"); // response text from server
 })
+
+// app.use(cors({
+//     origin:"http://localhost:3000/"
+// })) 
+//It allows the server to accept requests from the specified origin (http://localhost:3000/) and send responses back to that origin.
+
+app.use(cors("http://localhost:5173/"))
 app.use(express.json()) // this is a middleware that is used to parse the incoming request body in json format
 app.use('/user', require("./Routes/user_routes"))
 // app.use('/user', userroute);
