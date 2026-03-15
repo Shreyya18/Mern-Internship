@@ -37,3 +37,5 @@ app.use(cors("http://localhost:5173/"))
 app.use(express.json()) // this is a middleware that is used to parse the incoming request body in json format
 app.use('/user', require("./Routes/user_routes"))
 // app.use('/user', userroute);
+
+app.use('/product', require('./Routes/product_routes'))

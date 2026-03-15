@@ -10,9 +10,10 @@ const UserRoutes = () => {
     <div>
       <Topbar/>
         <Routes>
-            <Route path='/UHome' element={<UHome/>} />
-            <Route path='/UAbout' element={<UAbout/>}/>
-            <Route path='/' element={<Register/>} />
+            <Route path='/Home' element={<UHome/>} />
+            <Route path='/About' element={<UAbout/>}/>
+            <Route path='/Register' element={<Register/>} />
+            <Route path='/' element={<UHome/>} />
         </Routes>
     </div>
   )
