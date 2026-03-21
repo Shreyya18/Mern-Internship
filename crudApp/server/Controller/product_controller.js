@@ -42,5 +42,30 @@ const getproductbyid = async(req, res)=>{
     }
 }
 
+const deleteproduct = async(req,res)=>{
+    try {
+        const d_id = req.params.id;
+        const deleteproduct= await producttable.findByIdAndDelete(d_id);
+        console.log(deleteproduct);
+        res.status(200).json({message:"Product deleted", d_paroduct:deleteproduct})
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:"Server error", error});
+    }
+}
 
-module.exports = {addproduct, getproduct, getproductbyid}
+const updateproduct = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const body= req.body;
+        const updateproduct = await producttable.findByIdAndUpdate(id, body,{new:true})
+        console.log(updateproduct);
+        res.status(200).json({message:"Product updated", u_product:updateproduct})
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:"Server error", error});
+    }
+}
+
+
+module.exports = {addproduct, getproduct, getproductbyid, deleteproduct, updateproduct}
