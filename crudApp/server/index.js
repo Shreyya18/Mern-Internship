@@ -39,3 +39,5 @@ app.use('/user', require("./Routes/user_routes"))
 // app.use('/user', userroute);
 
 app.use('/product', require('./Routes/product_routes'))
+
+app.use('/category', require('./Routes/category_routes'))
