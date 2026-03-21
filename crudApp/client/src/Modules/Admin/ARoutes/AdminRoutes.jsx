@@ -9,6 +9,7 @@ import ManageProduct from '../AComponents/ManageProduct'
 import ManageUser from '../AComponents/ManageUser'
 import ViewProduct from '../AComponents/ViewProduct'
 import ViewCategory from '../AComponents/ViewCategory'
+import UpdateCategory from '../AComponents/UpdateCategory'
 const AdminRoutes = () => {
   return (
     <div>
@@ -23,6 +24,7 @@ const AdminRoutes = () => {
 ViewUser/>} />
         <Route path='/ViewProduct' element={<ViewProduct/>} />
         <Route path='/ViewCategory' element={<ViewCategory/>} />
+        <Route path='UpdateCategory/:id' element={<UpdateCategory/>} />
       </Routes>
     </div>
   )
