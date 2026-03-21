@@ -10,12 +10,14 @@ import ManageUser from '../AComponents/ManageUser'
 import ViewProduct from '../AComponents/ViewProduct'
 import ViewCategory from '../AComponents/ViewCategory'
 import UpdateCategory from '../AComponents/UpdateCategory'
+import AddProduct from '../AComponents/AddProduct'
 const AdminRoutes = () => {
   return (
     <div>
       <Sidebar/>
       <Routes>
         <Route path='/AHome' element={<AHome/>} />
+        <Route path='/AddProduct' element={<AddProduct/>} />
         <Route path='/AddCategory' element={<AddCategory/>} />
         <Route path='/ManageCategory' element={<ManageCategory/>}  />
         <Route path='ManageProduct' element={<ManageProduct/>} />
