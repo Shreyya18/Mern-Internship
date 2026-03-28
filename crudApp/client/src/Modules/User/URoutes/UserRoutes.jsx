@@ -5,6 +5,7 @@ import Topbar from '../UComponents/Topbar'
 import Register from '../UComponents/Register'
 import UAbout from '../UComponents/UAbout'
 import AddProduct from '../UComponents/AddProduct'
+import Products from '../UComponents/Products'
 
 const UserRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const UserRoutes = () => {
             <Route path='/About' element={<UAbout/>}/>
             <Route path='/Register' element={<Register/>} />
             <Route path='/' element={<AddProduct/>} />
+            <Route path='/Products' element={<Products/>} />
         </Routes>
     </div>
   )
