@@ -15,3 +15,5 @@ cors - (cross origin resource sharing) , it is used for security purpose
 
 nodemon - this command is used to run the server, here server runs whenever there is change in the file.
 
+multer - npm i multer
+it is a middleware for handling file/image uploads.

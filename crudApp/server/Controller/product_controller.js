@@ -3,13 +3,15 @@ const producttable = require('../Models/product_model')
 const addproduct = async(req,res)=>{
     try {
         const {product_name, product_price, product_qty, product_description, category_id}= req.body;
+        const pimage=req.file? req.file.filename:null;
 
         const productdetails = new producttable({
             product_name, 
             product_price, 
             product_qty, 
             product_description,
-            category_id
+            category_id,
+            product_image:pimage
         })
         await productdetails.save();
         res.status(201).json({message:"Product added successfully", pdata:productdetails})
