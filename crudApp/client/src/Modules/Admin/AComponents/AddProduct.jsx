@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useEffect } from 'react';
+import { InputLabel } from '@mui/material';
 
 
 export default function AddProduct() {
@@ -16,7 +17,8 @@ export default function AddProduct() {
     product_price:'',
     product_qty:'',
     product_description:'',
-    category_id:''
+    category_id:'',
+    product_image:''
   })
 
   const [category, setcategory]= useState([])
@@ -35,8 +37,14 @@ useEffect(()=>{
   const handlechange = (e)=>{
     console.log({...product,[e.target.name]:e.target.value})
     setproduct({...product,[e.target.name]:e.target.value})
+    if(e.target.name === "product_image"){
+      setproduct({...product, product_image:e.target.files[0]})
+    }
+    else{
+      setproduct({...product, [e.target.name]:e.target.value});
+    }
   }
-  const handleregister = ()=>{
+  const handleSubmit = ()=>{
     // const existingusers =JSON.parse(localStorage.getItem('userdetails')) || [];
     // console.log(existingusers)
     // const allusers = [...existingusers,formdata]
@@ -45,7 +53,7 @@ useEffect(()=>{
     // alert("Registration done!!!!!!!!!!!")
 
     console.log("Form details :", product)
-    axios.post("http://localhost:7000/product/addproduct", product)
+    axios.post("http://localhost:7000/product/addproduct", product, {headers:{'Content-Type':'multipart/form-data'}})
     .then((res)=>{
       console.log("registered user: ",res.data)
       // alert("Register succefully")
@@ -64,8 +72,10 @@ useEffect(()=>{
         <TextField variant='outlined' type='number' label='PPRICE' name='product_price' fullWidth style={{marginBottom:"10px"}}  onChange={handlechange}/>
         <TextField variant='outlined' type='number' label='PQUANTITY' name='product_qty' fullWidth style={{marginBottom:"10px"}} onChange={handlechange}/>
         <TextField variant='outlined' multiline rows={5} label='PDESCRIPTION' name='product_description' fullWidth style={{marginBottom:"10px"}} onChange={handlechange}/>
-        
+        <TextField variant='outlined' type='file' label='PIMAGE' name='product_image' fullWidth style={{marginBottom:"10px"}} onChange={handlechange} required/>
+
         <FormControl fullWidth>
+          <InputLabel>Category</InputLabel>
         <Select
         name="category_id"
           labelId="demo-simple-select-label"
@@ -85,7 +95,7 @@ useEffect(()=>{
         </Select>
       </FormControl>
         
-        <Button variant='contained' fullWidth onClick={handleregister}>ADD PRODUCT</Button>
+        <Button variant='contained' fullWidth onClick={handleSubmit}>ADD PRODUCT</Button>
       </Paper>
     </div>
   )
