@@ -17,7 +17,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { FormControl, InputLabel } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -47,6 +47,8 @@ export default function Products() {
   const [expanded, setExpanded] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [categories,setCategories] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
 
   useEffect(() => {
     axios.get("http://localhost:7000/product/getproduct")
@@ -66,7 +68,8 @@ export default function Products() {
   const fetchCategories = async()=>{
     try {
       const res = await axios.get('http://localhost:7000/category/getcategory')
-      setCategories(res.data);
+      setCategories(res.data.allcategory);
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -76,13 +79,20 @@ export default function Products() {
     fetchCategories();
   }, []);
 
+  const filteredproducts = selectedCategory === "All" ?  products : products.filter((prod)=>prod.category_id === selectedCategory)
+
   return (
     <div style={{display: 'flex', flexWrap:'wrap', gap:'20px'}}>
-      <FormControl>
+      <FormControl fullWidth>
         <InputLabel>Category</InputLabel>
-        
+        <Select label="Category" value={selectedCategory} onChange={(e)=>setSelectedCategory(e.target.value)}>
+        <MenuItem value="All">All</MenuItem>
+        {categories.map((cat)=>(
+          <MenuItem value={cat._id}>{cat.category_name}</MenuItem>
+        ))}
+        </Select>
       </FormControl>
-      {products.map((pdata) => (
+      {filteredproducts.map((pdata) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardHeader
             avatar={
