@@ -6,6 +6,7 @@ import Register from '../UComponents/Register'
 import UAbout from '../UComponents/UAbout'
 import AddProduct from '../UComponents/AddProduct'
 import Products from '../UComponents/Products'
+import Login from '../UComponents/Login'
 
 function AppContent(){
   const location = useLocation();
@@ -18,7 +19,7 @@ function AppContent(){
             <Route path='/' element={<UHome/>} />
             <Route path='/About' element={<UAbout/>}/>
             <Route path='/Register' element={<Register/>} />
-            {/* <Route path='/Login' element={<Login/>} /> */}
+            <Route path='/Login' element={<Login/>} />
             <Route path='/AddProduct' element={<AddProduct/>} />
             <Route path='/Products' element={<Products/>} />
         </Routes>
