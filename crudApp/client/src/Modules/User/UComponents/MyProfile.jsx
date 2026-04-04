@@ -36,7 +36,21 @@ export default function MyProfile() {
     }
     useEffect(() => {
         viewprofile();
-    })
+    },[])
+
+    const handleprofile = async(req,res)=>{
+        try {
+            const response = await fetch("http://localhost:7000/user/updateprofile", {method:"PUT", body:JSON.stringify(formData),headers:{"auth-token":token, "Content-Type":"application/json"}}) 
+            const details = await response.json()
+            console.log(details)
+            setFormData(details.udetails)
+            alert("profile updated")
+            
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({message:"server error"})
+        }
+    }
 
     return (
         <div style={{ backgroundColor: "aliceblue" }}>
@@ -47,7 +61,7 @@ export default function MyProfile() {
                 {/* <TextField variant='outlined' label='Password' fullWidth name='password' type='password' style={{marginBottom:"10px"}} onChange={handleChange}/> */}
                 <TextField variant='outlined' label='Phone ' fullWidth name='phone' type='Number' style={{ marginBottom: "10px" }} onChange={handleChange} value={formData.phone}/>
                 <TextField variant='outlined' label='Address ' name='address' multiline rows={4} fullWidth style={{ marginBottom: "10px" }} onChange={handleChange} value={formData.address} />
-                <Button variant='contained' fullWidth>Update</Button>
+                <Button variant='contained' fullWidth onClick={handleprofile}>Update</Button>
             </Paper>
         </div>
     )

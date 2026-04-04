@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useNavigate } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -19,6 +20,8 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Topbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const Navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,6 +37,17 @@ function Topbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handlesettings =(set)=>{
+    if(set==='Logout'){
+      alert("Are you sure you want to logout?")
+      localStorage.removeItem('UserToken');
+      Navigate("/Login")
+    }
+    else if(set ==='Profile'){
+      Navigate("/MyProfile")
+    }
+  }
 
   return (
     <AppBar position="static">
@@ -145,7 +159,7 @@ function Topbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={()=>handlesettings(setting)}>
                   <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
                 </MenuItem>
               ))}
