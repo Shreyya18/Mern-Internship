@@ -1,5 +1,5 @@
 const express= require('express')
-const {registeruser, getuser, getuserbyid, deleteuser, updateuser, Login}=require('../Controller/user_controller')
+const {registeruser, getuser, getuserbyid, deleteuser, updateuser, Login, getprofile}=require('../Controller/user_controller')
 const auth = require("../Middleware/Auth")
 
 const route=express.Router();
@@ -10,6 +10,7 @@ route.get('/getuserbyid/:id', getuserbyid)
 route.delete('/deleteuser/:id', deleteuser)
 route.put('/updateuser/:id', updateuser)
 route.post('/Login', Login)
+route.get('/getprofile', auth, getprofile)
 
 module.exports=route
 
