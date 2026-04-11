@@ -21,3 +21,47 @@ it is a middleware for handling file/image uploads.
 jwt json web token
 npm i jsonwebtoken
 it is used for secure authenticsion and authorization
+
+
+
+ADMIN
+-Login
+-view user
+-manage(add,view,update,delete) Category
+-manage products
+-manage orders(approve/reject)
+-manage payment(paid/failed)
+-view feedback
+
+USER
+-Register
+-Login
+-fiter category
+-view products
+-order
+-track status
+-write feedback
+
+
+
+service bookings
+
+ADMIN
+-Login
+-View users
+-Manage service category
+-MAnage service
+-Manage  requests(Approve/Reject)
+-Manage payment(paid/failed)
+-View feedback
+
+
+USER
+-Register
+-Login
+-Filter Category
+-View service
+-Book Service
+-View Request Status
+
+
