@@ -76,6 +76,7 @@ import { border } from '@mui/system';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 
 
@@ -92,7 +93,7 @@ export default function ViewProduct() {
     .catch((error)=>{
       console.log(error);
     })
-  })
+  },[])
   const HandleDelete=(uid)=>{
     axios.delete(`http://localhost:7000/product/deleteproduct/${uid}`)
     .then((res)=>{
@@ -132,7 +133,7 @@ export default function ViewProduct() {
               <TableCell align="right">{row.product_description}</TableCell>
               <TableCell align="right"><img src={`http://localhost:7000/image/${row.product_image}`} alt="" style={{width:"100px"}} /></TableCell>
               <TableCell align='right'>
-                  <Button variant='outlined'>UPDATE</Button>
+                  <Button variant='outlined' component = {Link} to={`/Admin/UpdateProduct/${row._id}`}>UPDATE</Button>
                   <Button variant='outlined' onClick={()=>HandleDelete(row._id)} >DELETE</Button>
               </TableCell>
             </TableRow>
