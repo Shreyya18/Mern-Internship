@@ -8,5 +8,5 @@ route.post('/addproduct',upload.single('product_image'), addproduct);
 route.get('/getproduct', getproduct)
 route.get('/getproductbyid/:id', getproductbyid)
 route.delete('/deleteproduct/:id', deleteproduct)
-route.put('/updateproduct/:id', updateproduct)
+route.put('/updateproduct/:id',upload.single('product_image'), updateproduct)
 module.exports = route;
