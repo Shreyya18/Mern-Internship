@@ -58,15 +58,34 @@ const deleteproduct = async(req,res)=>{
 }
 
 const updateproduct = async(req,res)=>{
-    try {
-        const {id} = req.params;
-        const body= req.body;
-        const updateproduct = await producttable.findByIdAndUpdate(id, body,{new:true})
-        console.log(updateproduct);
-        res.status(200).json({message:"Product updated", u_product:updateproduct})
+    // try {
+    //     const {id} = req.params;
+    //     const body= req.body;
+    //     const updateproduct = await producttable.findByIdAndUpdate(id, body,{new:true})
+    //     console.log(updateproduct);
+    //     res.status(200).json({message:"Product updated", u_product:updateproduct})
+    // } catch (error) {
+    //     console.log(error);
+    //     res.status(500).json({message:"Server error", error});
+    // }
+    try{
+    const{product_name, product_price, product_qty, product_description, category_id} = req.body;
+        const pimage = req.file ? req.file.filename:null
+
+        const productdetails ={
+           product_name, 
+            product_price, 
+            product_qty, 
+            product_description,
+            category_id,
+            product_image:pimage
+        };
+        const updateproduct = await producttable.findByIdAndUpdate(req.params.id, productdetails,{new:true});
+        // console.log(updateproduct)
+        res.status(200).json({success: true, message:"Product updated",updatedata:updateproduct})
     } catch (error) {
-        console.log(error);
-        res.status(500).json({message:"Server error", error});
+        console.log(error)
+        res.status(500).json({message:"Server error",error})
     }
 }
 
