@@ -15,7 +15,12 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const token = localStorage.getItem("UserToken");
+console.log(token)
+
+const settings = token? ['Profile', 'Logout']:['Login']
 
 function Topbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -46,6 +51,9 @@ function Topbar() {
     }
     else if(set ==='Profile'){
       Navigate("/MyProfile")
+    }
+    else if(set ==='Login'){
+      Navigate("/Login")
     }
   }
 
