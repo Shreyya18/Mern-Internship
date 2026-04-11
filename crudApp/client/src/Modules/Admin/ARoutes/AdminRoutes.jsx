@@ -11,6 +11,7 @@ import ViewProduct from '../AComponents/ViewProduct'
 import ViewCategory from '../AComponents/ViewCategory'
 import UpdateCategory from '../AComponents/UpdateCategory'
 import AddProduct from '../AComponents/AddProduct'
+import UpdateProduct from '../AComponents/UpdateProduct'
 const AdminRoutes = () => {
   return (
     <div>
@@ -27,6 +28,7 @@ ViewUser/>} />
         <Route path='/ViewProduct' element={<ViewProduct/>} />
         <Route path='/ViewCategory' element={<ViewCategory/>} />
         <Route path='UpdateCategory/:id' element={<UpdateCategory/>} />
+        <Route path='/UpdateProduct/:id' element={<UpdateProduct/>} />
       </Routes>
     </div>
   )
